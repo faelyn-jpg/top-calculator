@@ -39,7 +39,6 @@ function operate(num1, num2) {
 }
 
 let button = document.querySelectorAll('button')
-console.log(`button is ${button}`)
 
 document.addEventListener('click', (e) => {
   if (
@@ -53,23 +52,17 @@ document.addEventListener('click', (e) => {
       e.target.matches('.digit')
     ) {
       num2 ? (num2 += e.target.textContent) : (num2 = e.target.textContent)
-      console.log(`num2 is ${num2}`)
     }
     if (e.target.matches('.operator') && currentOperator && num2) {
       num1 = operate(num1, num2)
       currentOperator = e.target.id
-      console.log(`currentOperator is ${currentOperator}`)
       num2 = ''
-      console.log(`num1 is ${num1}`)
     } else if (e.target.matches('.operator')) {
       num1 = +displayValue
       currentOperator = e.target.id
-      console.log(`num1 is ${num1}`)
-      console.log(`currentOperator is ${currentOperator}`)
     }
     if (!currentOperator && num1) clearCalculator()
     if (e.target.matches('#equal')) {
-      console.log('clicked!')
       operate(num1, num2)
       num2 = ''
       currentOperator = ''
